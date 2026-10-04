@@ -13,6 +13,12 @@ export const OrchestrationExperience: React.FC = () => {
   const camera = useTransform(progress, [0, 1], [1, 1.07]);
   const flowOpacity = useTransform(progress, [0.2, 0.45, 0.9], [0, 1, 1]);
   const active = reduced ? undefined : connection;
+  const jumpTo = (fraction: number) => {
+    if (!section.current || typeof window === 'undefined') return;
+    const top = section.current.getBoundingClientRect().top + window.scrollY;
+    const distance = Math.max(0, section.current.offsetHeight - window.innerHeight);
+    window.scrollTo({ top: top + distance * fraction, behavior: reduced ? 'instant' : 'smooth' });
+  };
   return (
     <section ref={section} id="orchestration" aria-label="Business orchestration demonstration" className="relative h-[260vh] bg-[#0c0d0e]">
       <div className="sticky top-0 flex h-screen min-h-[560px] flex-col justify-center overflow-hidden px-4 sm:px-8">
@@ -44,7 +50,14 @@ export const OrchestrationExperience: React.FC = () => {
               <text x="36" y="445" fill="#6b7280" fontSize="12" fontFamily="monospace">INPUTS</text><text x="400" y="445" fill="#6b7280" fontSize="12" fontFamily="monospace">COORDINATE</text><text x="690" y="445" fill="#6b7280" fontSize="12" fontFamily="monospace">REASON</text><text x="900" y="445" fill="#6b7280" fontSize="12" fontFamily="monospace">ACT</text>
             </svg>
           </motion.div>
-          <div className="mt-5 flex items-center justify-between font-mono text-[11px] uppercase tracking-widest text-neutral-500"><span>Scroll to orchestrate</span><span>Concept prototype</span></div>
+          <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
+            <div className="flex flex-wrap gap-2" role="group" aria-label="Explore architecture stages">
+              {([{ label: '01 · Problem', at: 0 }, { label: '02 · Connect', at: 0.34 }, { label: '03 · Agents', at: 0.7 }, { label: '04 · Results', at: 1 }] as const).map(step => (
+                <button key={step.label} type="button" onClick={() => jumpTo(step.at)} className="rounded-md border border-white/15 px-3 py-2 font-mono text-[10px] text-neutral-300 transition-colors hover:border-[#c9a178] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#c9a178]">{step.label}</button>
+              ))}
+            </div>
+            <span className="font-mono text-[10px] uppercase tracking-widest text-neutral-500">Scroll to orchestrate</span>
+          </div>
         </div>
       </div>
     </section>
