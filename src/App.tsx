@@ -1,6 +1,7 @@
 import React from 'react';
 import { Header } from './components/Header';
 import { HeroSection } from './components/HeroSection';
+import { OrchestrationExperience } from './components/OrchestrationExperience';
 import { SolutionsSection } from './components/SolutionsSection';
 import { DisciplinesSection } from './components/DisciplinesSection';
 import { CredentialsSection } from './components/CredentialsSection';
@@ -19,6 +20,7 @@ export default function App() {
         <HeroSection />
 
         {/* Selected Works & Solutions Brochure (Power BI, DAX, Systems) */}
+        <OrchestrationExperience />
         <SolutionsSection />
 
         {/* Core Disciplines & Strategic Value */}
