@@ -6,3 +6,9 @@ coverage/
 *.log
 .env*
 !.env.example
+# Cleanup
+.env
+.env.*
+.firebase/
+*.pbix
+desktop.ini
