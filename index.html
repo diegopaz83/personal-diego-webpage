@@ -265,7 +265,6 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .contact .wrap { padding-block: 104px 36px; }
 .contact .cgrid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); grid-template-areas: "side form" "other form"; grid-template-rows: auto 1fr; gap: 44px 64px; align-items: start; }
 .cside { grid-area: side; }
-.cform { grid-area: form; }
 .other { grid-area: other; }
 .contact .eyebrow { color: var(--soft); }
 .contact h2 { font-size: clamp(42px, 6.4vw, 92px); font-weight: 800; font-stretch: 112%; letter-spacing: -0.04em; line-height: .94; margin-top: 12px; }
@@ -288,8 +287,23 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .mini { font: 500 13px var(--body); color: var(--deep-fg); background: transparent; border: 1px solid var(--hair); border-radius: 99px; padding: 6px 12px; cursor: pointer; text-decoration: none; }
 .mini:hover { background: var(--deep-fg); color: var(--deep); }
 
-.cform { background: var(--field); border: 1px solid var(--hair); border-radius: 20px; padding: 32px; display: grid; gap: 20px; }
-.cform h3 { font-size: 22px; font-weight: 700; }
+.cbox { grid-area: form; background: var(--field); border: 1px solid var(--hair); border-radius: 20px; overflow: hidden; }
+.cf-toggle { width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 26px 32px; background: transparent; border: 0; color: var(--deep-fg); text-align: left; cursor: pointer; font: inherit; }
+.cf-toggle:hover .plus { border-color: var(--deep-fg); }
+.cf-t b { display: block; font-family: var(--display); font-size: 22px; font-weight: 700; }
+.cf-t small { display: block; font-size: 14px; color: var(--soft); margin-top: 4px; }
+.cbox .plus { flex: none; border-color: var(--hair); }
+.cbox .plus::before, .cbox .plus::after { background: var(--deep-fg); }
+.cf-toggle[aria-expanded="true"] .plus { background: var(--accent); border-color: var(--accent); }
+.cf-toggle[aria-expanded="true"] .plus::before, .cf-toggle[aria-expanded="true"] .plus::after { background: var(--on-accent); }
+.cf-toggle[aria-expanded="true"] .plus::after { transform: translate(-50%, -50%) rotate(0deg); }
+.cf-sent { display: flex; align-items: center; gap: 12px; margin: 0 32px 24px; padding: 14px 16px; border-radius: 12px; background: color-mix(in srgb, #4CC38A 18%, transparent); font-size: 15px; }
+.cf-sent[hidden] { display: none; }
+.cf-sent .tick { width: 28px; height: 28px; border-radius: 50%; background: #4CC38A; color: #0B0A09; display: grid; place-items: center; flex: none; }
+.cf-panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .45s cubic-bezier(.2,.7,.2,1); }
+.cf-panel.open { grid-template-rows: 1fr; }
+.cf-inner { overflow: hidden; min-height: 0; }
+.cform { padding: 4px 32px 32px; display: grid; gap: 20px; border-top: 1px solid var(--hair); padding-top: 24px; }
 .cform .two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
 .field { display: grid; gap: 8px; min-width: 0; }
 .field label, .field legend { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--soft); padding: 0; }
@@ -324,7 +338,10 @@ fieldset.field { border: 0; margin: 0; padding: 0; }
   .sig { margin-top: 28px; }
 }
 @media (max-width: 520px) {
-  .cform { padding: 22px 18px; border-radius: 16px; }
+  .cf-toggle { padding: 20px 18px; }
+  .cf-sent { margin: 0 18px 18px; }
+  .cform { padding: 20px 18px 22px; }
+  .cbox { border-radius: 16px; }
   .cform .two { grid-template-columns: minmax(0, 1fr); }
   .send { justify-self: stretch; }
   .other li { gap: 6px 12px; }
@@ -333,6 +350,7 @@ fieldset.field { border: 0; margin: 0; padding: 0; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .cf-panel { transition: none; }
   .ribbon .track, .located .globe svg { animation: none; }
   * { transition: none !important; }
 }
@@ -662,8 +680,18 @@ RETURN SWITCH( TRUE(),
         </div>
       </div>
 
+      <div class="cbox" id="cf-box">
+        <button class="cf-toggle" id="cf-toggle" type="button" aria-expanded="false" aria-controls="cf-panel">
+          <span class="cf-t"><b>Send me a message</b><small>Takes less than a minute. I reply by email.</small></span>
+          <span class="plus" aria-hidden="true"></span>
+        </button>
+        <div class="cf-sent" id="cf-sent" role="status" aria-live="polite" hidden>
+          <span class="tick" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span id="cf-sent-text">Message sent.</span>
+        </div>
+        <div class="cf-panel" id="cf-panel" inert>
+          <div class="cf-inner">
       <form class="cform" id="contact-form" novalidate>
-        <h3>Send me a message</h3>
         <div class="two">
           <div class="field"><label for="cf-name">Your name</label><input id="cf-name" name="name" type="text" autocomplete="name" placeholder="Jane Smith" required></div>
           <div class="field"><label for="cf-email">Email</label><input id="cf-email" name="email" type="email" autocomplete="email" placeholder="jane@company.com" required></div>
@@ -684,6 +712,9 @@ RETURN SWITCH( TRUE(),
         <button class="send" id="cf-send" type="submit">Send message <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <p class="fnote">Your details are only used to reply to you.</p>
       </form>
+          </div>
+        </div>
+      </div>
 
       <div class="other">
         <div class="eyebrow">Other ways to reach me</div>
@@ -737,12 +768,26 @@ RETURN SWITCH( TRUE(),
   }
 
 
-  // Contact form. Paste the Web3Forms access key below to start receiving messages by email.
+  // Contact form (accordion). Messages go to Diego's inbox through Web3Forms.
   var FORM_KEY = '69859412-6e43-4653-a034-80f1d3a6ffd7';
   var form = document.getElementById('contact-form');
   if (form) {
     var st = document.getElementById('cf-status'), sendBtn = document.getElementById('cf-send');
+    var tog = document.getElementById('cf-toggle'), panel = document.getElementById('cf-panel');
+    var sent = document.getElementById('cf-sent'), sentText = document.getElementById('cf-sent-text');
+    var setOpen = function (on) {
+      panel.classList.toggle('open', on);
+      tog.setAttribute('aria-expanded', on ? 'true' : 'false');
+      if (on) { panel.removeAttribute('inert'); sent.hidden = true; setTimeout(function () { form.name.focus({ preventScroll: true }); }, 300); }
+      else { panel.setAttribute('inert', ''); }
+    };
+    tog.addEventListener('click', function () { setOpen(tog.getAttribute('aria-expanded') !== 'true'); });
     var show = function (cls, msg) { st.className = 'status ' + cls; st.textContent = msg; st.hidden = false; };
+    var done = function (name, note) {
+      form.reset(); st.hidden = true; setOpen(false);
+      sentText.textContent = 'Thanks, ' + name.split(' ')[0] + '. Your message is on its way and I will reply by email.' + (note || '');
+      sent.hidden = false;
+    };
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var name = form.name.value.trim(), email = form.email.value.trim(), msg = form.message.value.trim();
@@ -750,16 +795,19 @@ RETURN SWITCH( TRUE(),
       if (!name || !email || !msg || !topic) { show('err', 'Please fill in your name, email, a topic and a short message.'); return; }
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { show('err', 'That email address looks incomplete. Please check it.'); form.email.focus(); return; }
       if (form.botcheck.checked) return;
-      if (!FORM_KEY) { show('ok', 'Preview only: the form is not connected yet, so nothing was sent.'); return; }
+      var live = /github\.io$/.test(location.hostname);
       sendBtn.disabled = true; sendBtn.firstChild.textContent = 'Sending… ';
       fetch('https://api.web3forms.com/submit', {
         method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({ access_key: FORM_KEY, subject: 'Portfolio inquiry: ' + topic, from_name: 'Diego Paz portfolio', name: name, email: email, topic: topic, message: msg })
       }).then(function (r) { return r.json(); }).then(function (d) {
-        if (d && d.success) { form.reset(); show('ok', 'Thanks, ' + name.split(' ')[0] + '. Your message is on its way and I will reply by email.'); }
-        else { show('err', 'The message could not be sent. Please try again, or write to diegopaz83@gmail.com.'); }
-      }).catch(function () { show('err', 'The message could not be sent. Please check your connection, or write to diegopaz83@gmail.com.'); })
-        .then(function () { sendBtn.disabled = false; sendBtn.firstChild.textContent = 'Send message '; });
+        if (d && d.success) done(name);
+        else show('err', 'The message could not be sent. Please try again, or write to diegopaz83@gmail.com.');
+      }).catch(function () {
+        // Draft previews block outside requests: show the success flow there, marked as not sent.
+        if (!live) done(name, ' (Preview: nothing was actually sent.)');
+        else show('err', 'The message could not be sent. Please check your connection, or write to diegopaz83@gmail.com.');
+      }).then(function () { sendBtn.disabled = false; sendBtn.firstChild.textContent = 'Send message '; });
     });
   }
 
