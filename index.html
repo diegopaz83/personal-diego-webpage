@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Diego Paz — Digital Transformation Director and Enterprise Power BI Architect. Projects, career, values and contact.">
-<meta property="og:title" content="Diego Paz | Digital Transformation & Power BI">
-<meta property="og:description" content="Diego Paz — Digital Transformation Director and Enterprise Power BI Architect. Projects, career, values and contact.">
+<meta name="description" content="Diego Paz — AI Strategy Lead, Digital Transformation Director and Enterprise Power BI Architect. AI agents, n8n automation, projects and contact.">
+<meta property="og:title" content="Diego Paz | AI Strategy, Transformation & Power BI">
+<meta property="og:description" content="Diego Paz — AI Strategy Lead, Digital Transformation Director and Enterprise Power BI Architect. AI agents, n8n automation, projects and contact.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="img/hero-pro.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231A1613'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='700' font-size='28' text-anchor='middle' fill='%23F2C811'%3EDP%3C/text%3E%3C/svg%3E">
-<title>Diego Paz | Digital Transformation & Power BI</title>
+<title>Diego Paz | AI Strategy, Transformation & Power BI</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
@@ -74,6 +74,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .hero h1 .wave { display: inline-block; color: var(--muted); font-weight: 600; }
 .hero .role { margin-top: 28px; display: flex; gap: 14px; align-items: flex-start; font-size: clamp(19px, 2vw, 24px); line-height: 1.35; max-width: 34ch; }
 .hero .role svg { flex: none; margin-top: 6px; }
+.hero .role-sub { display: block; margin-top: 8px; font-family: var(--mono); font-size: 13px; line-height: 1.5; color: var(--muted); letter-spacing: .01em; }
 .hero .lede { margin-top: 18px; color: var(--muted); font-size: 17px; max-width: 52ch; }
 .portrait { position: relative; aspect-ratio: 4 / 5; max-width: 100%; border-radius: 28px; overflow: hidden; background: var(--bg-2); border: 1px solid var(--line); }
 .portrait svg { width: 100%; height: 100%; display: block; }
@@ -181,6 +182,32 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 }
 @media (max-width: 480px) { .mets { grid-template-columns: minmax(0, 1fr); } }
 
+
+/* Filters, galleries, links, placeholders */
+.filters { display: flex; flex-wrap: wrap; gap: 8px; }
+.fbtn { font: 500 14px var(--body); color: var(--ink); background: transparent; border: 1px solid var(--line); border-radius: 99px; padding: 8px 14px; cursor: pointer; display: inline-flex; gap: 8px; align-items: center; }
+.fbtn i { font-style: normal; font-family: var(--mono); font-size: 11.5px; color: var(--muted); }
+.fbtn:hover { border-color: var(--ink); }
+.fbtn[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.fbtn[aria-pressed="true"] i { color: var(--accent); }
+.ph-tag { font-style: normal; font-family: var(--mono); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; padding: 2px 6px; border-radius: 4px; border: 1px dashed var(--muted); color: var(--muted); margin-left: 6px; white-space: nowrap; }
+.idx summary .kpi b.muted { background: transparent; color: var(--muted); border: 1px dashed var(--line); }
+.gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; align-self: start; }
+.shot { margin: 0; aspect-ratio: 16 / 10; border-radius: 10px; overflow: hidden; border: 1px solid var(--line); background: var(--bg-2); }
+.shot.big { grid-column: 1 / -1; }
+.shot img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; cursor: zoom-in; transition: transform .3s; }
+.shot img:hover { transform: scale(1.02); }
+.shot.ph { display: grid; place-items: center; border-style: dashed; background: repeating-linear-gradient(-45deg, transparent 0 10px, color-mix(in srgb, var(--line) 45%, transparent) 10px 11px); }
+.shot.ph span { font-family: var(--mono); font-size: 11.5px; color: var(--muted); background: var(--bg-2); padding: 3px 8px; border-radius: 4px; }
+.links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.lnk { font: 500 14px var(--body); text-decoration: none; padding: 8px 14px; border-radius: 99px; border: 1px solid var(--ink); color: var(--ink); }
+a.lnk:hover { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.lnk.off { border-style: dashed; border-color: var(--line); color: var(--muted); }
+.lightbox { position: fixed; inset: 0; z-index: 50; background: rgba(10,9,8,.86); display: grid; place-items: center; padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); cursor: zoom-out; }
+.lightbox img { max-width: min(1200px, 100%); max-height: 100%; border-radius: 10px; box-shadow: 0 30px 80px -20px rgba(0,0,0,.6); }
+.lightbox button { position: absolute; top: max(16px, env(safe-area-inset-top, 0px)); right: max(16px, env(safe-area-inset-right, 0px)); width: 40px; height: 40px; border-radius: 50%; border: 0; background: #F2C811; color: #1A1613; font-size: 20px; cursor: pointer; }
+@media (max-width: 860px) { .work-head { align-items: flex-start; } }
+
 /* Illustrations */
 .ill-bg { fill: var(--bg-2); }
 .ill-ink { fill: var(--ink); }
@@ -197,7 +224,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .career h2 { font-size: clamp(36px, 5vw, 64px); font-weight: 800; font-stretch: 112%; letter-spacing: -0.03em; line-height: 1; }
 .career .eyebrow { color: color-mix(in srgb, var(--deep-fg) 60%, transparent); }
 .career .intro { margin-top: 18px; max-width: 56ch; color: color-mix(in srgb, var(--deep-fg) 72%, transparent); font-size: 17px; }
-.steps { margin-top: 56px; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; position: relative; list-style: none; padding: 0; }
+.steps { margin-top: 56px; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0; position: relative; list-style: none; padding: 0; }
 .steps::before { content: ""; position: absolute; left: 0; right: 0; top: 9px; height: 1px; background: color-mix(in srgb, var(--deep-fg) 25%, transparent); }
 .step { position: relative; padding: 36px 20px 0 0; }
 .step::before { content: ""; position: absolute; top: 2px; left: 0; width: 15px; height: 15px; border-radius: 50%; background: var(--deep); border: 2px solid var(--accent); }
@@ -363,6 +390,53 @@ fieldset.field { border: 0; margin: 0; padding: 0; }
 </head>
 <body>
 <!-- Illustration templates (reused in row thumbnails and project details) -->
+<template id="ill-agent">
+  <svg viewBox="0 0 360 240" aria-hidden="true">
+    <rect class="ill-bg" width="360" height="240"/>
+    <rect class="ill-ink" x="20" y="20" width="96" height="9" rx="4"/>
+    <g stroke="var(--line)" stroke-width="2"><line x1="180" y1="128" x2="70" y2="70"/><line x1="180" y1="128" x2="290" y2="70"/><line x1="180" y1="128" x2="70" y2="196"/><line x1="180" y1="128" x2="290" y2="196"/></g>
+    <rect x="34" y="52" width="72" height="36" rx="8" class="ill-mut"/><text class="ill-ts" x="70" y="74" text-anchor="middle">CRM</text>
+    <rect x="254" y="52" width="72" height="36" rx="8" class="ill-mut"/><text class="ill-ts" x="290" y="74" text-anchor="middle">Email</text>
+    <rect x="34" y="178" width="72" height="36" rx="8" class="ill-mut"/><text class="ill-ts" x="70" y="200" text-anchor="middle">ERP</text>
+    <rect x="254" y="178" width="72" height="36" rx="8" class="ill-mut"/><text class="ill-ts" x="290" y="200" text-anchor="middle">Docs</text>
+    <circle cx="180" cy="128" r="36" class="ill-acc"/>
+    <text class="ill-t" x="180" y="134" text-anchor="middle" style="font-size:16px">AI</text>
+  </svg>
+</template>
+<template id="ill-flow">
+  <svg viewBox="0 0 360 240" aria-hidden="true">
+    <rect class="ill-bg" width="360" height="240"/>
+    <rect class="ill-ink" x="20" y="20" width="110" height="9" rx="4"/>
+    <path d="M78 120 C 100 120, 100 120, 122 120 M182 120 C 210 120, 205 80, 232 80 M182 120 C 210 120, 205 165, 232 165" fill="none" stroke="var(--ink)" stroke-width="2.5"/>
+    <rect x="22" y="96" width="56" height="48" rx="10" class="ill-mut"/><circle cx="50" cy="120" r="9" class="ill-ink"/>
+    <rect x="122" y="96" width="60" height="48" rx="10" class="ill-acc"/><text class="ill-t" x="152" y="125" text-anchor="middle">AI</text>
+    <rect x="232" y="58" width="104" height="44" rx="10" class="ill-mut"/><text class="ill-ts" x="284" y="84" text-anchor="middle">Update CRM</text>
+    <rect x="232" y="143" width="104" height="44" rx="10" class="ill-mut"/><text class="ill-ts" x="284" y="169" text-anchor="middle">Notify team</text>
+    <text class="ill-ts" x="22" y="222">Trigger → AI step → actions</text>
+  </svg>
+</template>
+<template id="ill-roadmap">
+  <svg viewBox="0 0 360 240" aria-hidden="true">
+    <rect class="ill-bg" width="360" height="240"/>
+    <rect class="ill-ink" x="20" y="20" width="120" height="9" rx="4"/>
+    <line class="ill-grid" x1="20" y1="196" x2="340" y2="196"/>
+    <rect x="24" y="150" width="92" height="40" rx="8" class="ill-mut"/><text class="ill-ts" x="70" y="174" text-anchor="middle">Pilot</text>
+    <rect x="132" y="110" width="92" height="80" rx="8" class="ill-acc" opacity=".55"/><text class="ill-ts" x="178" y="154" text-anchor="middle">Scale</text>
+    <rect x="240" y="66" width="96" height="124" rx="8" class="ill-acc"/><text class="ill-t" x="288" y="132" text-anchor="middle">Govern</text>
+    <polyline class="ill-strk" points="40,140 150,100 300,52"/>
+    <text class="ill-ts" x="20" y="222">AI adoption roadmap</text>
+  </svg>
+</template>
+<template id="ill-code">
+  <svg viewBox="0 0 360 240" aria-hidden="true">
+    <rect class="ill-bg" width="360" height="240"/>
+    <rect x="20" y="20" width="320" height="200" rx="12" class="ill-ink"/>
+    <circle cx="40" cy="38" r="5" fill="#E5484D"/><circle cx="56" cy="38" r="5" fill="#F2C811"/><circle cx="72" cy="38" r="5" fill="#4CC38A"/>
+    <g fill="var(--bg-2)" opacity=".85"><rect x="40" y="66" width="90" height="8" rx="4"/><rect x="56" y="86" width="140" height="8" rx="4"/><rect x="56" y="106" width="110" height="8" rx="4"/><rect x="72" y="126" width="150" height="8" rx="4"/><rect x="56" y="146" width="80" height="8" rx="4"/><rect x="40" y="166" width="60" height="8" rx="4"/></g>
+    <rect x="232" y="122" width="10" height="16" fill="#F2C811"/>
+    <path d="M292 150l6 14 14 6-14 6-6 14-6-14-14-6 14-6z" fill="#F2C811"/>
+  </svg>
+</template>
 <template id="ill-pnl">
   <svg viewBox="0 0 360 240" aria-hidden="true">
     <rect class="ill-bg" width="360" height="240"/>
@@ -438,7 +512,7 @@ fieldset.field { border: 0; margin: 0; padding: 0; }
 
 <header class="nav">
   <div class="wrap">
-    <a class="logo" href="#top">© Diego Paz <small>BI · Transformation</small></a>
+    <a class="logo" href="#top">© Diego Paz <small>AI · BI · Transformation</small></a>
     <nav aria-label="Sections"><a href="#work">Work</a><a href="#career">Career</a><a href="#values">Values</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
   </div>
 </header>
@@ -450,9 +524,9 @@ fieldset.field { border: 0; margin: 0; padding: 0; }
         <h1>Hi, I'm<br>Diego<span class="wave">.</span></h1>
         <div class="role">
           <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><path d="M3 3 L19 19 M19 8 V19 H8" fill="none" stroke="currentColor" stroke-width="2"/></svg>
-          <span>Digital Transformation Director &amp; Enterprise Power BI Architect</span>
+          <span>AI Strategy Lead &amp; Digital Transformation Director<small class="role-sub">Enterprise Power BI · AI agents · n8n automation · Vibe coding</small></span>
         </div>
-        <p class="lede">I help companies stop arguing about numbers and start <mark>deciding with them</mark>. Engineer by training, data architect by craft, change leader by choice.</p>
+        <p class="lede">I help companies stop arguing about numbers and <mark>put AI to work</mark>: governed data first, then agents and automations that take the busywork off people's desks. Engineer by training, builder by habit, change leader by choice.</p>
       </div>
       <div class="portrait-wrap">
         <div class="portrait flip" id="flip" tabindex="0" role="button" aria-pressed="false" aria-label="Flip the photo to see Diego at the office">
@@ -472,14 +546,14 @@ fieldset.field { border: 0; margin: 0; padding: 0; }
 
   <div class="ribbon" aria-hidden="true">
     <div class="track">
-      <div class="grp"><span class="it"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="12" width="4.5" height="8" rx="1.2" fill="currentColor"/><rect x="9.75" y="7.5" width="4.5" height="12.5" rx="1.2" fill="currentColor" opacity=".8"/><rect x="15.5" y="3" width="4.5" height="17" rx="1.2" fill="currentColor" opacity=".6"/></svg></span>Power BI</span><span class="it"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 4.5c-2.2-.6-3.4.6-3.8 2.8L8 18.5c-.4 2.2-1.6 3-3.5 2.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.5 10.5h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 12l6 7M20 12l-6 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Advanced DAX</span><span class="it"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/></svg></span>Digital Transformation</span><span class="it"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="6" height="6" rx="1.2" fill="currentColor"/><path d="M9.5 9.5 6 6M14.5 9.5 18 6M9.5 14.5 6 18M14.5 14.5 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="4.8" cy="4.8" r="2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="19.2" cy="4.8" r="2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="4.8" cy="19.2" r="2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="19.2" cy="19.2" r="2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Star Schema Modeling</span><span class="it"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.6-5.9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 4v4.5h-4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 8v4l2.5 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Scrum &amp; PMBOK</span><span class="it"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="7.5" r="2.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.5 19c.4-3.4 2.2-5.5 4.5-5.5s4.1 2.1 4.5 5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 10.5l3-3 3 3M17 7.5V18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Change Management</span><span class="it"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17a8 8 0 1 1 16 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 17l4-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="17" r="1.6" fill="currentColor"/><path d="M6.5 11.5l1 1M12 7v1.5M17.5 11.5l-1 1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Industrial Telemetry</span><span class="it"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 17.5h6M10 21h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.4.3.6.8.6 1.3v.4h6v-.4c0-.5.2-1 .6-1.3A6 6 0 0 0 12 3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 7v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Design Thinking</span></div>
-      <div class="grp"><span class="it"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="12" width="4.5" height="8" rx="1.2" fill="currentColor"/><rect x="9.75" y="7.5" width="4.5" height="12.5" rx="1.2" fill="currentColor" opacity=".8"/><rect x="15.5" y="3" width="4.5" height="17" rx="1.2" fill="currentColor" opacity=".6"/></svg></span>Power BI</span><span class="it"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 4.5c-2.2-.6-3.4.6-3.8 2.8L8 18.5c-.4 2.2-1.6 3-3.5 2.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.5 10.5h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 12l6 7M20 12l-6 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Advanced DAX</span><span class="it"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/></svg></span>Digital Transformation</span><span class="it"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="6" height="6" rx="1.2" fill="currentColor"/><path d="M9.5 9.5 6 6M14.5 9.5 18 6M9.5 14.5 6 18M14.5 14.5 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="4.8" cy="4.8" r="2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="19.2" cy="4.8" r="2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="4.8" cy="19.2" r="2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="19.2" cy="19.2" r="2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Star Schema Modeling</span><span class="it"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.6-5.9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 4v4.5h-4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 8v4l2.5 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Scrum &amp; PMBOK</span><span class="it"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="7.5" r="2.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.5 19c.4-3.4 2.2-5.5 4.5-5.5s4.1 2.1 4.5 5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 10.5l3-3 3 3M17 7.5V18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Change Management</span><span class="it"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17a8 8 0 1 1 16 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 17l4-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="17" r="1.6" fill="currentColor"/><path d="M6.5 11.5l1 1M12 7v1.5M17.5 11.5l-1 1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Industrial Telemetry</span><span class="it"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 17.5h6M10 21h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.4.3.6.8.6 1.3v.4h6v-.4c0-.5.2-1 .6-1.3A6 6 0 0 0 12 3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 7v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Design Thinking</span></div>
+      <div class="grp"><span class="it"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.2 5.3L19.5 10l-5.3 2.2L12 17.5l-2.2-5.3L4.5 10l5.3-1.7z" fill="currentColor"/><path d="M18.5 15.5l.9 2.1 2.1.9-2.1.9-.9 2.1-.9-2.1-2.1-.9 2.1-.9z" fill="currentColor"/></svg></span>AI Strategy</span><span class="it"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="8" width="14" height="11" rx="3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 4v4M9.5 13h.01M14.5 13h.01M9.5 16.2h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="3.5" r="1.2" fill="currentColor"/></svg></span>AI Agents</span><span class="it"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="2.4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="19" cy="6" r="2.4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="19" cy="18" r="2.4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.4 12h3.1c1.5 0 2.2-.7 2.9-2l1.2-2.4c.4-.8 1-1.6 2-1.6M10.5 12c1.5 0 2.2.7 2.9 2l1.2 2.4c.4.8 1 1.6 2 1.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>n8n Orchestration</span><span class="it"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.5 4.5 10.5 19.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Vibe Coding</span><span class="it"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="12" width="4.5" height="8" rx="1.2" fill="currentColor"/><rect x="9.75" y="7.5" width="4.5" height="12.5" rx="1.2" fill="currentColor" opacity=".8"/><rect x="15.5" y="3" width="4.5" height="17" rx="1.2" fill="currentColor" opacity=".6"/></svg></span>Power BI</span><span class="it"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 4.5c-2.2-.6-3.4.6-3.8 2.8L8 18.5c-.4 2.2-1.6 3-3.5 2.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.5 10.5h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 12l6 7M20 12l-6 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Advanced DAX</span><span class="it"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/></svg></span>Digital Transformation</span><span class="it"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="6" height="6" rx="1.2" fill="currentColor"/><path d="M9.5 9.5 6 6M14.5 9.5 18 6M9.5 14.5 6 18M14.5 14.5 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="4.8" cy="4.8" r="2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="19.2" cy="4.8" r="2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="4.8" cy="19.2" r="2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="19.2" cy="19.2" r="2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Star Schema Modeling</span><span class="it"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.6-5.9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 4v4.5h-4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 8v4l2.5 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Scrum &amp; PMBOK</span><span class="it"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="7.5" r="2.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.5 19c.4-3.4 2.2-5.5 4.5-5.5s4.1 2.1 4.5 5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 10.5l3-3 3 3M17 7.5V18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Change Management</span><span class="it"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17a8 8 0 1 1 16 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 17l4-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="17" r="1.6" fill="currentColor"/><path d="M6.5 11.5l1 1M12 7v1.5M17.5 11.5l-1 1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Industrial Telemetry</span><span class="it"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 17.5h6M10 21h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.4.3.6.8.6 1.3v.4h6v-.4c0-.5.2-1 .6-1.3A6 6 0 0 0 12 3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 7v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Design Thinking</span></div>
+      <div class="grp"><span class="it"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.2 5.3L19.5 10l-5.3 2.2L12 17.5l-2.2-5.3L4.5 10l5.3-1.7z" fill="currentColor"/><path d="M18.5 15.5l.9 2.1 2.1.9-2.1.9-.9 2.1-.9-2.1-2.1-.9 2.1-.9z" fill="currentColor"/></svg></span>AI Strategy</span><span class="it"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="8" width="14" height="11" rx="3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 4v4M9.5 13h.01M14.5 13h.01M9.5 16.2h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="3.5" r="1.2" fill="currentColor"/></svg></span>AI Agents</span><span class="it"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="2.4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="19" cy="6" r="2.4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="19" cy="18" r="2.4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.4 12h3.1c1.5 0 2.2-.7 2.9-2l1.2-2.4c.4-.8 1-1.6 2-1.6M10.5 12c1.5 0 2.2.7 2.9 2l1.2 2.4c.4.8 1 1.6 2 1.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>n8n Orchestration</span><span class="it"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.5 4.5 10.5 19.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Vibe Coding</span><span class="it"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="12" width="4.5" height="8" rx="1.2" fill="currentColor"/><rect x="9.75" y="7.5" width="4.5" height="12.5" rx="1.2" fill="currentColor" opacity=".8"/><rect x="15.5" y="3" width="4.5" height="17" rx="1.2" fill="currentColor" opacity=".6"/></svg></span>Power BI</span><span class="it"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 4.5c-2.2-.6-3.4.6-3.8 2.8L8 18.5c-.4 2.2-1.6 3-3.5 2.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.5 10.5h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 12l6 7M20 12l-6 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Advanced DAX</span><span class="it"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/></svg></span>Digital Transformation</span><span class="it"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="6" height="6" rx="1.2" fill="currentColor"/><path d="M9.5 9.5 6 6M14.5 9.5 18 6M9.5 14.5 6 18M14.5 14.5 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="4.8" cy="4.8" r="2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="19.2" cy="4.8" r="2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="4.8" cy="19.2" r="2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="19.2" cy="19.2" r="2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Star Schema Modeling</span><span class="it"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.6-5.9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 4v4.5h-4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 8v4l2.5 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Scrum &amp; PMBOK</span><span class="it"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="7.5" r="2.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.5 19c.4-3.4 2.2-5.5 4.5-5.5s4.1 2.1 4.5 5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 10.5l3-3 3 3M17 7.5V18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Change Management</span><span class="it"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17a8 8 0 1 1 16 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 17l4-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="17" r="1.6" fill="currentColor"/><path d="M6.5 11.5l1 1M12 7v1.5M17.5 11.5l-1 1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Industrial Telemetry</span><span class="it"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 17.5h6M10 21h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.4.3.6.8.6 1.3v.4h6v-.4c0-.5.2-1 .6-1.3A6 6 0 0 0 12 3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 7v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Design Thinking</span></div>
     </div>
   </div>
 
   <section class="statement">
     <div class="wrap">
-      <p class="big">For 18+ years I've connected three worlds that rarely talk to each other: <mark>engineering</mark>, <mark>data</mark> and <mark>executive strategy</mark>. The result is real-time visibility, metrics you can audit, and digital processes people actually use.</p>
+      <p class="big">For 18+ years I've connected <mark>engineering</mark>, <mark>data</mark> and <mark>executive strategy</mark>. Today I lead how companies adopt <mark>AI</mark>: the strategy, the agents and automations that do real work, and the governance that keeps them safe and useful.</p>
       <div class="side">
         <p>Available for consulting engagements and for technology leadership roles, across North and Latin America.</p>
         <a class="round magnetic" href="#about">About me</a>
@@ -490,12 +564,97 @@ fieldset.field { border: 0; margin: 0; padding: 0; }
   <section class="work" id="work">
     <div class="wrap">
       <div class="work-head">
-        <h2>Selected work</h2>
-        <span class="eyebrow">Open a project for the full story</span>
+        <div><h2>Selected work</h2><span class="eyebrow" style="display:block;margin-top:12px">Open a project for the full story</span></div>
+        <div class="filters" role="group" aria-label="Filter projects">
+          <button type="button" class="fbtn" data-f="all" aria-pressed="true">All <i>9</i></button>
+          <button type="button" class="fbtn" data-f="ai" aria-pressed="false">AI <i>4</i></button>
+          <button type="button" class="fbtn" data-f="bi" aria-pressed="false">BI <i>3</i></button>
+          <button type="button" class="fbtn" data-f="transformation" aria-pressed="false">Transformation <i>2</i></button>
+        </div>
       </div>
       <div class="cols eyebrow"><span></span><span>Project</span><span>Field</span><span style="text-align:right">Headline result</span><span></span></div>
       <div class="idx">
-        <details data-ill="ill-pnl">
+        <details data-ill="ill-code" data-cat="ai">
+          <summary><span class="thumb" data-fill="ill-code"></span><h3>This portfolio, vibe-coded with Claude</h3><span class="cat">Vibe coding</span><span class="kpi"><b>Live</b></span><span class="plus" aria-hidden="true"></span></summary>
+          <div class="detail">
+            <div class="gallery">
+              <figure class="shot big"><img src="img/portfolio-1.jpg" width="1200" height="750" alt="Portfolio hero with flip-card photo" loading="lazy"></figure>
+              <figure class="shot"><img src="img/portfolio-2.jpg" width="1200" height="750" alt="Project index with thumbnails" loading="lazy"></figure>
+              <figure class="shot"><img src="img/portfolio-3.jpg" width="1200" height="750" alt="Contact section with message form" loading="lazy"></figure>
+            </div>
+            <div>
+              <dl>
+                <div><dt>The problem</dt><dd>My old site was a generated template that did not show who I am or what I build.</dd></div>
+                <div><dt>What I built</dt><dd>Designed and shipped this site end to end with Claude Code: flip-card hero, project index, a contact form wired to email with an anti-duplicate lock, and automatic publishing from GitHub.</dd></div>
+                <div><dt>Impact</dt><dd>Went from idea to a live, maintainable site I can keep improving in short conversations.</dd></div>
+              </dl>
+              <div class="mets"><div class="met"><b>1</b><span>Working session from blank page to live site</span></div><div class="met"><b>0</b><span>Build steps: plain HTML, CSS and JS</span></div><div class="met"><b>5 min</b><span>Anti-duplicate lock on the form</span></div></div>
+              <div class="stack"><span>Claude Code</span><span>HTML / CSS / JS</span><span>GitHub Actions</span><span>GitHub Pages</span><span>Web3Forms</span></div>
+              <div class="links"><a class="lnk" href="https://github.com/diegopaz83/personal-diego-webpage" target="_blank" rel="noopener">View code ↗</a><a class="lnk" href="https://diegopaz83.github.io/personal-diego-webpage/" target="_blank" rel="noopener">Live demo ↗</a></div>
+            </div>
+          </div>
+        </details>
+        <details data-ill="ill-roadmap" data-cat="ai">
+          <summary><span class="thumb" data-fill="ill-roadmap"></span><h3>AI implementation strategy &amp; adoption roadmap</h3><span class="cat">AI Strategy <em class="ph-tag">Placeholder</em></span><span class="kpi"><b class="muted">TBD</b></span><span class="plus" aria-hidden="true"></span></summary>
+          <div class="detail">
+            <div class="gallery">
+              <figure class="shot ph big"><span>Screenshot coming soon</span></figure>
+              <figure class="shot ph"><span>Screenshot</span></figure>
+              <figure class="shot ph"><span>Screenshot</span></figure>
+            </div>
+            <div>
+              <dl>
+                <div><dt>The problem</dt><dd>[Placeholder] Teams were trying AI tools on their own, with no priorities, no guardrails and no way to measure value.</dd></div>
+                <div><dt>What I built</dt><dd>[Placeholder] An AI strategy with a use-case portfolio, governance and security rules, and a phased roadmap from pilot to scale.</dd></div>
+                <div><dt>Impact</dt><dd>[Placeholder] Describe adoption, savings or decisions enabled.</dd></div>
+              </dl>
+              <div class="mets"><div class="met"><b>—</b><span>Use cases prioritized</span></div><div class="met"><b>—</b><span>Teams onboarded</span></div><div class="met"><b>—</b><span>Hours saved per month</span></div></div>
+              <div class="stack"><span>AI governance</span><span>Use-case scoring</span><span>Change management</span><span>Training</span></div>
+              <div class="links"><span class="lnk off">View code · soon</span><span class="lnk off">Live demo · soon</span></div>
+            </div>
+          </div>
+        </details>
+        <details data-ill="ill-agent" data-cat="ai">
+          <summary><span class="thumb" data-fill="ill-agent"></span><h3>AI agent for [business process]</h3><span class="cat">AI Agents <em class="ph-tag">Placeholder</em></span><span class="kpi"><b class="muted">TBD</b></span><span class="plus" aria-hidden="true"></span></summary>
+          <div class="detail">
+            <div class="gallery">
+              <figure class="shot ph big"><span>Screenshot coming soon</span></figure>
+              <figure class="shot ph"><span>Screenshot</span></figure>
+              <figure class="shot ph"><span>Screenshot</span></figure>
+            </div>
+            <div>
+              <dl>
+                <div><dt>The problem</dt><dd>[Placeholder] A repetitive process ate hours of expert time every week.</dd></div>
+                <div><dt>What I built</dt><dd>[Placeholder] An AI agent that reads requests, looks up data in company systems and drafts the response or action for a person to approve.</dd></div>
+                <div><dt>Impact</dt><dd>[Placeholder] Describe time saved, quality or response time.</dd></div>
+              </dl>
+              <div class="mets"><div class="met"><b>—</b><span>Requests handled</span></div><div class="met"><b>—</b><span>Faster response</span></div><div class="met"><b>—</b><span>Accuracy after review</span></div></div>
+              <div class="stack"><span>LLM agents</span><span>Tool calling</span><span>RAG</span><span>Human in the loop</span></div>
+              <div class="links"><span class="lnk off">View code · soon</span><span class="lnk off">Live demo · soon</span></div>
+            </div>
+          </div>
+        </details>
+        <details data-ill="ill-flow" data-cat="ai">
+          <summary><span class="thumb" data-fill="ill-flow"></span><h3>n8n workflow orchestration</h3><span class="cat">Automation <em class="ph-tag">Placeholder</em></span><span class="kpi"><b class="muted">TBD</b></span><span class="plus" aria-hidden="true"></span></summary>
+          <div class="detail">
+            <div class="gallery">
+              <figure class="shot ph big"><span>Screenshot coming soon</span></figure>
+              <figure class="shot ph"><span>Screenshot</span></figure>
+              <figure class="shot ph"><span>Screenshot</span></figure>
+            </div>
+            <div>
+              <dl>
+                <div><dt>The problem</dt><dd>[Placeholder] Data moved between systems by hand, with copy-paste errors and delays.</dd></div>
+                <div><dt>What I built</dt><dd>[Placeholder] n8n workflows that connect the systems and add an AI step to classify, summarize or route each item automatically.</dd></div>
+                <div><dt>Impact</dt><dd>[Placeholder] Describe volume automated and errors avoided.</dd></div>
+              </dl>
+              <div class="mets"><div class="met"><b>—</b><span>Workflows in production</span></div><div class="met"><b>—</b><span>Tasks automated per month</span></div><div class="met"><b>—</b><span>Manual hours removed</span></div></div>
+              <div class="stack"><span>n8n</span><span>APIs &amp; webhooks</span><span>LLM steps</span><span>Monitoring</span></div>
+              <div class="links"><span class="lnk off">View code · soon</span><span class="lnk off">Live demo · soon</span></div>
+            </div>
+          </div>
+        </details>
+        <details data-ill="ill-pnl" data-cat="bi">
           <summary><span class="thumb" data-fill="ill-pnl"></span><h3>Financial control tower &amp; real-time P&amp;L</h3><span class="cat">Enterprise BI</span><span class="kpi"><b>−83%</b></span><span class="plus" aria-hidden="true"></span></summary>
           <div class="detail">
             <div class="art" data-fill="ill-pnl"></div>
@@ -518,7 +677,7 @@ IF( NOT ISBLANK(Budget) &amp;&amp; Budget &gt; 0,
           </div>
         </details>
 
-        <details data-ill="ill-oee">
+        <details data-ill="ill-oee" data-cat="bi">
           <summary><span class="thumb" data-fill="ill-oee"></span><h3>Plant OEE &amp; reliability cockpit</h3><span class="cat">Industrial &amp; IoT</span><span class="kpi"><b>+14.5%</b></span><span class="plus" aria-hidden="true"></span></summary>
           <div class="detail">
             <div class="art" data-fill="ill-oee"></div>
@@ -539,7 +698,7 @@ RETURN AvailabilityRate * PerformanceRate * QualityRate</pre></details>
           </div>
         </details>
 
-        <details data-ill="ill-pmo">
+        <details data-ill="ill-pmo" data-cat="transformation">
           <summary><span class="thumb" data-fill="ill-pmo"></span><h3>Enterprise PMO &amp; agile governance</h3><span class="cat">Strategy &amp; Governance</span><span class="kpi"><b>94%</b></span><span class="plus" aria-hidden="true"></span></summary>
           <div class="detail">
             <div class="art" data-fill="ill-pmo"></div>
@@ -559,7 +718,7 @@ RETURN IF(ActualCost &gt; 0, DIVIDE(EarnedValue, ActualCost, 1), 1)</pre></detai
           </div>
         </details>
 
-        <details data-ill="ill-abc">
+        <details data-ill="ill-abc" data-cat="bi">
           <summary><span class="thumb" data-fill="ill-abc"></span><h3>Working capital &amp; ABC inventory</h3><span class="cat">Supply Chain</span><span class="kpi"><b>−65%</b></span><span class="plus" aria-hidden="true"></span></summary>
           <div class="detail">
             <div class="art" data-fill="ill-abc"></div>
@@ -581,7 +740,7 @@ RETURN SWITCH( TRUE(),
           </div>
         </details>
 
-        <details data-ill="ill-radar">
+        <details data-ill="ill-radar" data-cat="transformation">
           <summary><span class="thumb" data-fill="ill-radar"></span><h3>Digital maturity &amp; adoption diagnostic</h3><span class="cat">Transformation</span><span class="kpi"><b>+42%</b></span><span class="plus" aria-hidden="true"></span></summary>
           <div class="detail">
             <div class="art" data-fill="ill-radar"></div>
@@ -604,13 +763,14 @@ RETURN SWITCH( TRUE(),
     <div class="wrap">
       <div class="eyebrow">Career path</div>
       <h2 style="margin-top:10px">From circuits to boardrooms.</h2>
-      <p class="intro">Engineering taught me how systems behave. Data taught me how to measure them. Leadership taught me how people change them.</p>
+      <p class="intro">Engineering taught me how systems behave. Data taught me how to measure them. Leadership taught me how people change them. AI is how I put all three to work.</p>
       <ol class="steps">
         <li class="step"><div class="k">Foundation</div><h3>Electronic engineering</h3><p>Universidad del Valle. Research on neural networks and fuzzy logic. Licensed engineer.</p></li>
         <li class="step"><div class="k">Plant floor</div><h3>Industrial automation</h3><p>SCADA, plant historians and telemetry pipelines for continuous production lines.</p></li>
         <li class="step"><div class="k">Data</div><h3>Enterprise BI</h3><p>Star schemas, advanced DAX and governed executive cockpits for finance and operations.</p></li>
         <li class="step"><div class="k">Delivery</div><h3>Agile leadership</h3><p>Multidisciplinary teams, Scrum with PMBOK control, clients across the Americas.</p></li>
-        <li class="step"><div class="k">Today</div><h3>Digital transformation</h3><p>Master's from the University of Barcelona. Roadmaps, change and adoption with ROI.</p></li>
+        <li class="step"><div class="k">Transformation</div><h3>Digital transformation</h3><p>Master's from the University of Barcelona. Roadmaps, change and adoption with ROI.</p></li>
+        <li class="step"><div class="k">Now</div><h3>AI strategy &amp; agents</h3><p>Leading AI implementation: agents, n8n orchestration and vibe-coded tools with real business impact.</p></li>
       </ol>
     </div>
   </section>
@@ -627,6 +787,7 @@ RETURN SWITCH( TRUE(),
       </div>
       <div class="eyebrow" style="margin-top:64px">Strengths</div>
       <div class="strengths">
+        <span><b>AI builder</b>: agents, n8n and vibe coding</span>
         <span><b>Translator</b> between engineers and the C-suite</span>
         <span><b>Systems thinker</b></span>
         <span><b>Hands-on</b> with DAX, SQL and Power Query</span>
@@ -704,7 +865,8 @@ RETURN SWITCH( TRUE(),
         <fieldset class="field">
           <legend>How can I help?</legend>
           <div class="chips" style="margin-top:8px">
-            <label><input type="radio" name="topic" id="cf-t1" value="Power BI architecture" required><span>Power BI architecture</span></label>
+            <label><input type="radio" name="topic" id="cf-t0" value="AI strategy &amp; agents" required><span>AI strategy &amp; agents</span></label>
+            <label><input type="radio" name="topic" id="cf-t1" value="Power BI architecture"><span>Power BI architecture</span></label>
             <label><input type="radio" name="topic" id="cf-t2" value="Transformation advisory"><span>Transformation advisory</span></label>
             <label><input type="radio" name="topic" id="cf-t3" value="PMO leadership"><span>PMO leadership</span></label>
             <label><input type="radio" name="topic" id="cf-t4" value="Full-time role"><span>Full-time role</span></label>
@@ -748,6 +910,30 @@ RETURN SWITCH( TRUE(),
 
   var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+
+  // Project filters
+  var fbtns = document.querySelectorAll('.fbtn');
+  fbtns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var f = b.dataset.f;
+      fbtns.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      document.querySelectorAll('.idx > details').forEach(function (d) { d.hidden = !(f === 'all' || d.dataset.cat === f); });
+    });
+  });
+
+  // Screenshot lightbox
+  document.addEventListener('click', function (e) {
+    var img = e.target.closest && e.target.closest('.shot img');
+    if (!img) return;
+    var lb = document.createElement('div'); lb.className = 'lightbox'; lb.setAttribute('role', 'dialog'); lb.setAttribute('aria-label', img.alt);
+    var big = document.createElement('img'); big.src = img.src; big.alt = img.alt;
+    var x = document.createElement('button'); x.type = 'button'; x.setAttribute('aria-label', 'Close'); x.textContent = '×';
+    lb.appendChild(big); lb.appendChild(x); document.body.appendChild(lb); x.focus();
+    var close = function () { lb.remove(); document.removeEventListener('keydown', esc); img.focus && img.focus(); };
+    var esc = function (ev) { if (ev.key === 'Escape') close(); };
+    lb.addEventListener('click', close); document.addEventListener('keydown', esc);
+  });
 
   // Magnetic round buttons
   if (fine && !still) {
