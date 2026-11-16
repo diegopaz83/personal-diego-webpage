@@ -299,6 +299,11 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .cf-toggle[aria-expanded="true"] .plus::after { transform: translate(-50%, -50%) rotate(0deg); }
 .cf-sent { display: flex; align-items: center; gap: 12px; margin: 0 32px 24px; padding: 14px 16px; border-radius: 12px; background: color-mix(in srgb, #4CC38A 18%, transparent); font-size: 15px; }
 .cf-sent[hidden] { display: none; }
+.cf-sent .sent-body { display: grid; gap: 4px; }
+.cf-sent .add { font-size: 14px; color: var(--soft); }
+.cf-sent .add b { color: var(--deep-fg); font-weight: 500; user-select: all; }
+.cbox.locked .cf-toggle { cursor: default; }
+.cbox.locked .plus { display: none; }
 .cf-sent .tick { width: 28px; height: 28px; border-radius: 50%; background: #4CC38A; color: #0B0A09; display: grid; place-items: center; flex: none; }
 .cf-panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .45s cubic-bezier(.2,.7,.2,1); }
 .cf-panel.open { grid-template-rows: 1fr; }
@@ -682,12 +687,12 @@ RETURN SWITCH( TRUE(),
 
       <div class="cbox" id="cf-box">
         <button class="cf-toggle" id="cf-toggle" type="button" aria-expanded="false" aria-controls="cf-panel">
-          <span class="cf-t"><b>Send me a message</b><small>Takes less than a minute. I reply by email.</small></span>
+          <span class="cf-t"><b id="cf-title">Send me a message</b><small id="cf-sub">Takes less than a minute. I reply by email.</small></span>
           <span class="plus" aria-hidden="true"></span>
         </button>
         <div class="cf-sent" id="cf-sent" role="status" aria-live="polite" hidden>
           <span class="tick" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span id="cf-sent-text">Message sent.</span>
+          <span class="sent-body"><span id="cf-sent-text">Message sent.</span><span class="add">Need to add something? Email me at <b>diegopaz83@gmail.com</b></span></span>
         </div>
         <div class="cf-panel" id="cf-panel" inert>
           <div class="cf-inner">
@@ -781,12 +786,37 @@ RETURN SWITCH( TRUE(),
       if (on) { panel.removeAttribute('inert'); sent.hidden = true; setTimeout(function () { form.name.focus({ preventScroll: true }); }, 300); }
       else { panel.setAttribute('inert', ''); }
     };
-    tog.addEventListener('click', function () { setOpen(tog.getAttribute('aria-expanded') !== 'true'); });
+    var box = document.getElementById('cf-box'), title = document.getElementById('cf-title'), sub = document.getElementById('cf-sub');
+    var WAIT = 5 * 60 * 1000, KEY = 'cf-sent-at', timer = null, locked = false;
+    var store = { get: function () { try { return JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) { return null; } },
+                  set: function (v) { try { localStorage.setItem(KEY, JSON.stringify(v)); } catch (e) {} },
+                  clear: function () { try { localStorage.removeItem(KEY); } catch (e) {} } };
+    // After a successful send the card stays locked for 5 minutes, even across reloads, to avoid duplicate messages.
+    var lock = function (at, first) {
+      var left = at + WAIT - Date.now();
+      if (left <= 0) { unlock(); return; }
+      locked = true; box.classList.add('locked'); tog.setAttribute('aria-disabled', 'true');
+      title.textContent = 'Message sent ✓';
+      sub.textContent = 'You can send another message in ' + Math.ceil(left / 60000) + ' min.';
+      sentText.textContent = (first ? 'Thanks, ' + first + '. ' : '') + 'Your message is on its way and I will reply by email.';
+      sent.hidden = false;
+      clearTimeout(timer); timer = setTimeout(function () { lock(at, first); }, Math.min(left, 30000));
+    };
+    var unlock = function () {
+      locked = false; box.classList.remove('locked'); tog.removeAttribute('aria-disabled');
+      title.textContent = 'Send me a message'; sub.textContent = 'Takes less than a minute. I reply by email.';
+      sent.hidden = true; store.clear(); clearTimeout(timer);
+    };
+    var saved = store.get();
+    if (saved && saved.at) lock(saved.at, saved.first);
+    tog.addEventListener('click', function () { if (locked) return; setOpen(tog.getAttribute('aria-expanded') !== 'true'); });
     var show = function (cls, msg) { st.className = 'status ' + cls; st.textContent = msg; st.hidden = false; };
     var done = function (name, note) {
       form.reset(); st.hidden = true; setOpen(false);
-      sentText.textContent = 'Thanks, ' + name.split(' ')[0] + '. Your message is on its way and I will reply by email.' + (note || '');
-      sent.hidden = false;
+      var first = name.split(' ')[0], at = Date.now();
+      store.set({ at: at, first: first });
+      lock(at, first);
+      if (note) sentText.textContent += note;
     };
     form.addEventListener('submit', function (e) {
       e.preventDefault();
